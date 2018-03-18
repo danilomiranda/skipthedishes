@@ -6,7 +6,7 @@ import { connect } from 'react-redux'
 import { Container, Row, Alert } from 'reactstrap'
 import * as actions from '../actions/AuthActions'
 import RenderField from '../components/RenderField'
-import { ClimbingBoxLoader } from 'react-spinners'
+import { PulseLoader } from 'react-spinners'
 import validate from '../validators/validateSignUp'
 
 class Signup extends Component {
@@ -74,7 +74,7 @@ class Signup extends Component {
         </Row>
         {this.props.success}
         {!this.props.authenticated ? (this.props.success ? success :
-          (this.props.loading ? <ClimbingBoxLoader /> : form)) :
+          (this.props.loading ? <PulseLoader /> : form)) :
           <Redirect to={{
             pathname: '/',
             state: { from: this.props.location }

@@ -21,7 +21,7 @@ export default function (state = INITIAL_STATE, action) {
   case PRODUCTS_FETCH_ERROR:
     return { ...state, error: action.payload, loading: false }
   case SEND_ORDER_SUCCESS:
-    return { ...state, orderResp: action.payload, loading: false }
+    return { ...state, orderResp: action.payload, success: true, loading: false }
   case SEND_ORDER_ERROR:
     return { ...state, error: action.payload, loading: false }
   case CHECK_PRODUCT:

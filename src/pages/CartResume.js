@@ -6,17 +6,12 @@ import {
   Row,
   ListGroup,
   ListGroupItem,
+  Alert,
   Button } from 'reactstrap'
 
 import { unCheck, sendOrder } from '../actions/ProductActions'
 import App from '../containers/App';
-
-const groupBy = function(xs, key) {
-  return xs.reduce(function(rv, x) {
-    (rv[x[key]] = rv[x[key]] || []).push(x);
-    return rv;
-  }, {});
-};
+import groupBy from '../util/groupBy'
 
 class CartResume extends Component {
   total(cart) {
@@ -63,6 +58,13 @@ class CartResume extends Component {
     <App>
       <Container>
         <Row>
+          {this.props.success ? (
+            <Alert color="success">
+              Order Registered
+            </Alert>
+          ): ''}
+        </Row>
+        <Row>
           <ListGroup>
           {this.props.cart && this.props.cart.map((product) => (
             <ListGroupItem key={product.id}>
@@ -71,7 +73,7 @@ class CartResume extends Component {
             </ListGroupItem>
           ))}
             <ListGroupItem>
-              {` `}{this.total(this.props.cart)}
+              {`TOTAL $ `}{this.total(this.props.cart)}
             </ListGroupItem>
           </ListGroup>
         </Row>
@@ -96,7 +98,8 @@ CartResume.propTypes = {
 
 const mapStateToProps = ({ product }) => {
   return {
-    cart: product.cart
+    cart: product.cart,
+    success: product.success
   }
 }
 
