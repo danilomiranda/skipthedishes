@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
+import {Helmet} from "react-helmet";
 import {
   Container,
   Row,
@@ -56,6 +57,10 @@ class CartResume extends Component {
   render() {
     return (
     <App>
+      <Helmet>
+          <title>Skip the Dishes - Cart Resume</title>
+          <meta name="description" content="Cart resume, order, get your food" />
+      </Helmet>
       <Container>
         <Row>
           {this.props.success ? (

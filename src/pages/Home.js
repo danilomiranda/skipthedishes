@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
+import {Helmet} from "react-helmet";
 import {
   Container,
   Col,
@@ -25,6 +26,10 @@ class Home extends Component {
   render() {
     return (
     <App>
+      <Helmet>
+          <title>Skip the Dishes - Product list</title>
+          <meta name="description" content="Nice description to SEO" />
+      </Helmet>
       <Container>
         <Row>
           {this.props.products && this.props.products.map((product) => (
